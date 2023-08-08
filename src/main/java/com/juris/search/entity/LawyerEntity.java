@@ -15,9 +15,10 @@ public class LawyerEntity {
     @Id
     private Long id;
 
-    private String hashCode;
-
-    private LocalDateTime inclusion;
-
+    private String name;
+    private String Lastname;
+    private String document;
+    private String orderCode;
     private String userName;
+    private String password;
 }
