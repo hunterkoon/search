@@ -3,6 +3,8 @@ package com.juris.search.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 public class SearchGeneralDTO {
@@ -13,7 +15,9 @@ public class SearchGeneralDTO {
     private String Lastname;
     private String document;
     private String orderCode;
-    private String userName;
+    private String userCode;
+    private Set<String> parameters;
+
 
 
     //TODO ADD ALL PARAMETERS OF POSSIBLE TO SEACH AND RETURN LIMITED NUMBERS OF LAWYERS;

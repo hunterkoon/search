@@ -17,9 +17,11 @@ public class SearchController {
     }
 
     @PostMapping
-    public ResponseEntity<String> getHashCodeByParameters(@RequestBody SearchGeneralDTO searchGeneral){
+    public ResponseEntity<String> createHashCodeByParameters(@RequestBody SearchGeneralDTO searchGeneral){
         //TODO PASS METHOD DEPEND OF ITEMS IN REQUEST
         searchService.getHashCodeBySearch(searchGeneral);
         return  ResponseEntity.ok("");
     }
+
+
 }

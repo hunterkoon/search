@@ -2,11 +2,14 @@ package com.juris.search.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -21,4 +24,7 @@ public class LawyerEntity {
     private String orderCode;
     private String userName;
     private String password;
+
+    @OneToMany
+    List<ParametersEntity> parameters;
 }

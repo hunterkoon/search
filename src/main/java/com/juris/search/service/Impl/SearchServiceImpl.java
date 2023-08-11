@@ -25,4 +25,6 @@ private final SeachRepository repository;
         repository.save(new SearchEntity().getEntity(type));
         return null;
     }
+
+
 }

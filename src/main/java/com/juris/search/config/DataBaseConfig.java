@@ -23,7 +23,7 @@ public class DataBaseConfig {
 
     @Bean
     public DataSource dataSource() throws SQLException {
-        DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+        DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
         dataSourceBuilder.driverClassName(driverName);
         dataSourceBuilder.url(url);
         dataSourceBuilder.username(username);

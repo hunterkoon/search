@@ -22,8 +22,11 @@ public class SearchEntity {
 
     private String userName;
 
-   public SearchEntity getEntity(SearchGeneralDTO dto){
-        this.userName = dto.getUserName();
+    @ManyToOne
+    @JoinColumn(referencedColumnName = "id")
+    LawyerEntity lawyer;
+
+    public SearchEntity getEntity(SearchGeneralDTO dto) {
         this.inclusion = LocalDateTime.now();
         return this;
     }
