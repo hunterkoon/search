@@ -1,12 +1,10 @@
 package com.juris.search.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.sound.midi.Sequence;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,6 +14,7 @@ import java.util.List;
 @Table(name = "tbl-lawyer", schema = "search")
 public class LawyerEntity {
     @Id
+    @GeneratedValue
     private Long id;
 
     private String name;

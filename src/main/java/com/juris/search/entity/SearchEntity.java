@@ -22,6 +22,8 @@ public class SearchEntity {
 
     private String userName;
 
+    private String search;
+
     @ManyToOne
     @JoinColumn(referencedColumnName = "id")
     LawyerEntity lawyer;

@@ -4,10 +4,7 @@ import com.juris.search.entity.SearchEntity;
 import com.juris.search.model.SearchGeneralDTO;
 import com.juris.search.repository.SeachRepository;
 import com.juris.search.service.SearchService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.lang.reflect.Method;
 
 @Service
 public class SearchServiceImpl implements SearchService<SearchGeneralDTO>{
