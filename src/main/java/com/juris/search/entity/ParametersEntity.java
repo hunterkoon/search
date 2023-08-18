@@ -11,12 +11,15 @@ import lombok.Setter;
 public class ParametersEntity {
 
     @Id
+    @GeneratedValue
     Long id;
 
     @Column
     String parameter;
 
+    @Column
+    String document;
+
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
     LawyerEntity lawyer;
 }

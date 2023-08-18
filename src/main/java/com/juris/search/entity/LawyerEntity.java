@@ -14,13 +14,12 @@ import java.util.List;
 @Table(name = "tbl-lawyer", schema = "search")
 public class LawyerEntity {
     @Id
-    @GeneratedValue
-    private Long id;
+    private String document;
+    @Id
+    private String orderCode;
 
     private String name;
-    private String Lastname;
-    private String document;
-    private String orderCode;
+    private String lastname;
     private String userName;
     private String password;
 

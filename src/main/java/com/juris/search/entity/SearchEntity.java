@@ -13,7 +13,6 @@ import java.time.LocalDateTime;
 @Table(name = "tbl-search", schema = "search")
 public class SearchEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String hashCode;
@@ -24,8 +23,9 @@ public class SearchEntity {
 
     private String search;
 
+    private String document;
+
     @ManyToOne
-    @JoinColumn(referencedColumnName = "id")
     LawyerEntity lawyer;
 
     public SearchEntity getEntity(SearchGeneralDTO dto) {
