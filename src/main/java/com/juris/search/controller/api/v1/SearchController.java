@@ -1,4 +1,4 @@
-package com.juris.search.controller;
+package com.juris.search.controller.api.v1;
 
 import com.juris.search.model.SearchGeneralDTO;
 import com.juris.search.service.SearchService;
