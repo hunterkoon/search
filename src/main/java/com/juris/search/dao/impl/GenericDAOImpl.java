@@ -29,6 +29,12 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
     }
 
     @Override
+    @Transactional
+    public void saveAll(List<T> entitys) {
+        entitys.forEach( en -> em.persist(en));
+    }
+
+    @Override
     public void delete(T entity) {
         em.remove(entity);
     }

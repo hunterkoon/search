@@ -1,11 +1,12 @@
 package com.juris.search.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.sound.midi.Sequence;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -25,4 +26,7 @@ public class LawyerEntity {
 
     @OneToMany
     List<ParametersEntity> parameters;
+
+    @OneToMany
+    List<RegionEntity> region;
 }

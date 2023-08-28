@@ -10,6 +10,8 @@ public interface GenericDAO<T>{
 
     void save(T entity);
 
+    void saveAll(List<T> entitys);
+
     void delete(T entity);
 
     List<T> findAll(T entity);
