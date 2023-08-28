@@ -3,6 +3,7 @@ package com.juris.search.dao.impl;
 import com.juris.search.dao.GenericDAO;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Repository
 @Transactional
+@Slf4j
 public class GenericDAOImpl<T> implements GenericDAO<T> {
 
     @PersistenceContext
@@ -31,7 +33,12 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
     @Override
     @Transactional
     public void saveAll(List<T> entitys) {
-        entitys.forEach( en -> em.persist(en));
+        try {
+            entitys.forEach(en -> em.persist(en));
+        } catch (Exception ex) {
+            log.error("Error on execute command in database : ", ex);
+        }
+
     }
 
     @Override
