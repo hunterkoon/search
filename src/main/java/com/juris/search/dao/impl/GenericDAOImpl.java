@@ -1,11 +1,10 @@
 package com.juris.search.dao.impl;
 
 import com.juris.search.dao.GenericDAO;
+import com.juris.search.exception.HandlerException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,7 +13,7 @@ import java.util.List;
 @Repository
 @Transactional
 @Slf4j
-public class GenericDAOImpl<T> implements GenericDAO<T> {
+public class GenericDAOImpl<T,K> implements GenericDAO<T,K> {
 
     @PersistenceContext
     private EntityManager em;
@@ -27,16 +26,24 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
 
     @Override
     public void save(T entity) {
-        em.persist(entity);
+        try {
+            em.persist(entity);
+            em.flush();
+        } catch (Exception ex) {
+            throw new HandlerException(ex.getMessage(), ex);
+        }
     }
 
     @Override
     @Transactional
     public void saveAll(List<T> entitys) {
         try {
-            entitys.forEach(en -> em.persist(en));
+            entitys.forEach(en -> {
+                em.persist(en);
+                em.flush();
+            });
         } catch (Exception ex) {
-            log.error("Error on execute command in database : ", ex);
+            throw new HandlerException(ex.getMessage(), ex);
         }
 
     }
@@ -55,5 +62,10 @@ public class GenericDAOImpl<T> implements GenericDAO<T> {
     @Override
     public T findOne(Long id) {
         return em.find(cl, id);
+    }
+
+    @Override
+    public T findOne(K pk) {
+        return em.find(cl , pk);
     }
 }

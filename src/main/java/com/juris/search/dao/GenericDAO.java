@@ -1,12 +1,8 @@
 package com.juris.search.dao;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-public interface GenericDAO<T>{
+public interface GenericDAO<T, K> {
 
     void save(T entity);
 
@@ -17,5 +13,6 @@ public interface GenericDAO<T>{
     List<T> findAll(T entity);
 
     T findOne(Long id);
+    T findOne(K id);
 
 }

@@ -1,8 +1,8 @@
 package com.juris.search.controller.api.v1;
 
 import com.juris.search.dao.GenericDAO;
-import com.juris.search.entity.LawyerEntity;
 import com.juris.search.entity.RegionEntity;
+import com.juris.search.entity.RegionPK;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,17 +23,13 @@ import java.util.List;
 public class RegionController {
 
     @Autowired
-    GenericDAO<RegionEntity> dao;
+    GenericDAO<RegionEntity, RegionPK> dao;
 
     @PostMapping
     public ResponseEntity<Long> createRegion(@RequestBody List<RegionEntity> regions) {
-        try {
-            dao.saveAll(regions);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception ex) {
-            log.error("Error on execute command in database : ", ex);
-            throw ex;
-        }
+        dao.saveAll(regions);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+
     }
 
 }

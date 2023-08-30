@@ -9,6 +9,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@IdClass(RegionPK.class)
 @Table(name = "tbl-region", schema = "search")
 public class RegionEntity {
 
