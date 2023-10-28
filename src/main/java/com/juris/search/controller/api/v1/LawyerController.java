@@ -2,7 +2,7 @@ package com.juris.search.controller.api.v1;
 
 import com.juris.search.dao.GenericDAO;
 import com.juris.search.entity.LawyerEntity;
-import com.juris.search.entity.LawyerPK;
+import com.juris.search.entity.pk.LawyerPK;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,8 +25,9 @@ public class LawyerController {
     }
 
     @GetMapping("/{lawyerCode}/{documentCode}")
-    public ResponseEntity<LawyerEntity> getLawyer(@PathVariable String lawyerCode, @PathVariable String documentCode) {
-        return new ResponseEntity<>(dao.findOne(new LawyerPK(lawyerCode, documentCode)), HttpStatus.OK);
+    public ResponseEntity<LawyerEntity> getLawyer(@PathVariable String lawyerCode, @PathVariable String documentCode) throws InstantiationException, IllegalAccessException {
+        return new ResponseEntity<>(
+                dao.findByPk(LawyerEntity.class,  new LawyerPK(lawyerCode, documentCode)), HttpStatus.OK);
 
     }
 

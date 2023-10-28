@@ -10,6 +10,8 @@ import lombok.Setter;
 @Table(name = "tbl-parameters", schema = "search")
 public class ParametersEntity {
 
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue
     Long id;

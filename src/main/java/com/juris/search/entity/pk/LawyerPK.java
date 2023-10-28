@@ -1,4 +1,4 @@
-package com.juris.search.entity;
+package com.juris.search.entity.pk;
 
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
@@ -14,6 +14,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class LawyerPK implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     private String document;
     @Id

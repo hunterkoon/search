@@ -1,4 +1,4 @@
-package com.juris.search.entity;
+package com.juris.search.entity.pk;
 
 import jakarta.persistence.Id;
 import lombok.Getter;
@@ -10,6 +10,8 @@ import java.io.Serializable;
 @Setter
 public class RegionPK implements Serializable  {
 
+
+    private static final long serialVersionUID = 1L;
     @Id
     private String stateCode;
 

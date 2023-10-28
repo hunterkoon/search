@@ -13,16 +13,11 @@ import java.util.List;
 @Repository
 @Transactional
 @Slf4j
-public class GenericDAOImpl<T,K> implements GenericDAO<T,K> {
+public class GenericDAOImpl<T, K> implements GenericDAO<T, K> {
 
     @PersistenceContext
     private EntityManager em;
 
-    private Class<T> cl;
-
-    public final void setClass(final Class<T> clazzToSet) {
-        this.cl = clazzToSet;
-    }
 
     @Override
     public void save(T entity) {
@@ -54,18 +49,13 @@ public class GenericDAOImpl<T,K> implements GenericDAO<T,K> {
     }
 
     @Override
-    public List<T> findAll(T entity) {
-        return (List<T>) em.createQuery("FROM" + cl.getName())
-                .getResultList();
+    public T findByPk(Class<T> t, K k) {
+        try {
+            return (T) em.find(t.getClass(), k);
+
+        } catch (Exception ex) {
+            throw ex;
+        }
     }
 
-    @Override
-    public T findOne(Long id) {
-        return em.find(cl, id);
-    }
-
-    @Override
-    public T findOne(K pk) {
-        return em.find(cl , pk);
-    }
 }

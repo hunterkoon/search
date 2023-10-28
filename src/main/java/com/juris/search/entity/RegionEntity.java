@@ -1,17 +1,20 @@
 package com.juris.search.entity;
 
+import com.juris.search.entity.pk.RegionPK;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.io.Serializable;
 
 @Entity
 @Getter
 @Setter
 @IdClass(RegionPK.class)
 @Table(name = "tbl-region", schema = "search")
-public class RegionEntity {
+public class RegionEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     private String stateCode;

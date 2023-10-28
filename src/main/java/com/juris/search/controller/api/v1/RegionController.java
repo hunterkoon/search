@@ -2,7 +2,7 @@ package com.juris.search.controller.api.v1;
 
 import com.juris.search.dao.GenericDAO;
 import com.juris.search.entity.RegionEntity;
-import com.juris.search.entity.RegionPK;
+import com.juris.search.entity.pk.RegionPK;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

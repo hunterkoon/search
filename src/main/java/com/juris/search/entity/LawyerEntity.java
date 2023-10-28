@@ -1,9 +1,11 @@
 package com.juris.search.entity;
 
+import com.juris.search.entity.pk.LawyerPK;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
@@ -11,7 +13,10 @@ import java.util.List;
 @Setter
 @IdClass(LawyerPK.class)
 @Table(name = "tbl-lawyer", schema = "search")
-public class LawyerEntity {
+public class LawyerEntity implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     private String document;
     @Id
@@ -23,8 +28,8 @@ public class LawyerEntity {
     private String password;
 
     @OneToMany
-    List<ParametersEntity> parameters;
+    private List<ParametersEntity> parameters;
 
     @OneToMany
-    List<RegionEntity> region;
+    private List<RegionEntity> region;
 }

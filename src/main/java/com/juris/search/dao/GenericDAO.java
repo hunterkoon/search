@@ -10,9 +10,6 @@ public interface GenericDAO<T, K> {
 
     void delete(T entity);
 
-    List<T> findAll(T entity);
-
-    T findOne(Long id);
-    T findOne(K id);
+    T findByPk(Class<T> t, K k);
 
 }
