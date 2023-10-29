@@ -1,16 +1,16 @@
 package com.juris.search.service.Impl;
 
 import com.juris.search.entity.LawyerEntity;
-import com.juris.search.repository.LawerRepository;
+import com.juris.search.repository.LawyerRepository;
 import com.juris.search.service.LawyerService;
 import org.springframework.stereotype.Service;
 
 @Service
 public class LawyerServiceImpl implements LawyerService {
 
-    private final LawerRepository lawerRepository;
+    private final LawyerRepository lawerRepository;
 
-    LawyerServiceImpl(LawerRepository lawerRepository) {
+    LawyerServiceImpl(LawyerRepository lawerRepository) {
         this.lawerRepository = lawerRepository;
     }
 

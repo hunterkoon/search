@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface  LawerRepository extends CrudRepository<LawyerEntity, LawyerPK> {
+public interface LawyerRepository extends CrudRepository<LawyerEntity, LawyerPK> {
 }
