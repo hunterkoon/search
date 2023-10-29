@@ -1,5 +1,7 @@
 package com.juris.search.config;
 
+import com.juris.search.exception.HandlerException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -9,7 +11,10 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 
 @Configuration
+@Slf4j
 public class DataBaseConfig {
+
+    private static final String ERROR = "Fail on connect to database!";
 
     @Value("${spring.datasource.url}")
     private String url;
@@ -20,15 +25,20 @@ public class DataBaseConfig {
     @Value("${spring.datasource.driver-class-name}")
     private String driverName;
 
-
     @Bean
     public DataSource dataSource() throws SQLException {
-        DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
-        dataSourceBuilder.driverClassName(driverName);
-        dataSourceBuilder.url(url);
-        dataSourceBuilder.username(username);
-        dataSourceBuilder.password(password);
-        return dataSourceBuilder.build();
+        try {
+            DataSourceBuilder<?> dataSourceBuilder = DataSourceBuilder.create();
+            dataSourceBuilder.driverClassName(driverName);
+            dataSourceBuilder.url(url);
+            dataSourceBuilder.username(username);
+            dataSourceBuilder.password(password);
+            return dataSourceBuilder.build();
+        } catch (Exception ex) {
+            log.error(ERROR);
+            throw new HandlerException(ERROR, ex);
+        }
+
     }
 
 }

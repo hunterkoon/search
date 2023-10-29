@@ -27,7 +27,6 @@ public class LawyerController {
     @GetMapping("/{lawyerCode}/{documentCode}")
     public ResponseEntity<LawyerEntity> getLawyer(@PathVariable String lawyerCode, @PathVariable String documentCode) throws InstantiationException, IllegalAccessException {
         return new ResponseEntity<>(HttpStatus.OK);
-
     }
 
 }

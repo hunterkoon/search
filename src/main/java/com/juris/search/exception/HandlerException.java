@@ -21,6 +21,8 @@ public class HandlerException extends RuntimeException {
         super(message, cause);
         if (cause.getMessage().contains("duplicate key")) {
             throw new HandlerException("Registro já foi inserido anteriormente", message, cause);
+        } else {
+            throw new HandlerException(message, cause);
         }
     }
 
