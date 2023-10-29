@@ -32,4 +32,8 @@ public class HandlerException extends RuntimeException {
         this.cause = cause;
     }
 
+    public HandlerException(String message){
+        this.message = message;
+    }
+
 }
