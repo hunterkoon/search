@@ -18,10 +18,8 @@ public class RegionEntity implements Serializable {
 
     @Id
     private String stateCode;
-
     @Id
     private String number;
-
     @Id
     private String document;
 

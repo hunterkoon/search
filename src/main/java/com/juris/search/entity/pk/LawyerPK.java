@@ -4,6 +4,7 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 
@@ -11,6 +12,7 @@ import java.io.Serializable;
 @Setter
 public class LawyerPK implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

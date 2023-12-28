@@ -2,8 +2,7 @@ package com.juris.search.entity;
 
 import com.juris.search.entity.pk.LawyerPK;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -12,6 +11,9 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @IdClass(LawyerPK.class)
 @Table(name = "tbl-lawyer", schema = "search")
 public class LawyerEntity implements Serializable {
@@ -27,9 +29,13 @@ public class LawyerEntity implements Serializable {
     private String name;
     private String lastname;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
     private List<ParametersEntity> parameters;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
     private List<RegionEntity> region;
+
+    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
+    private RegisterEntity register;
+
 }

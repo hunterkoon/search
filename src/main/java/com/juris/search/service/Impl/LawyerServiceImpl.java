@@ -6,6 +6,7 @@ import com.juris.search.exception.HandlerException;
 import com.juris.search.model.LawyerDTO;
 import com.juris.search.repository.LawyerRepository;
 import com.juris.search.service.LawyerService;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -20,9 +21,19 @@ public class LawyerServiceImpl implements LawyerService {
     }
 
     @Override
-    public LawyerEntity save(LawyerEntity lawyer) {
-        lawerRepository.save(lawyer);
-        return lawyer;
+    @Transactional
+    public LawyerEntity save(LawyerEntity lawyerEntity) {
+
+        lawerRepository.save(LawyerEntity.builder()
+                .document(lawyerEntity.getDocument())
+                .name(lawyerEntity.getName())
+                .orderCode(lawyerEntity.getOrderCode())
+                .parameters(lawyerEntity.getParameters())
+                //.region(lawyerEntity.getRegion())
+                .register(lawyerEntity.getRegister())
+                .build());
+
+        return lawyerEntity;
     }
 
     @Override

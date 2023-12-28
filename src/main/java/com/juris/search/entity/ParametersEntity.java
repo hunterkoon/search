@@ -4,24 +4,32 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serial;
+import java.io.Serializable;
+
 @Entity
 @Getter
 @Setter
 @Table(name = "tbl-parameters", schema = "search")
-public class ParametersEntity {
+@SequenceGenerator(name = "PARAM_SQ", sequenceName = "PARAMETER_SEQ", initialValue = 1, allocationSize = 1)
+public class ParametersEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
-    Long id;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PARAM_SQ")
+    private Long id;
 
     @Column
-    String parameter;
+    private String parameter;
 
     @Column
-    String document;
+    private String document;
 
-    @ManyToOne
-    LawyerEntity lawyer;
+    @Column
+    private String orderCode;
+
+    @ManyToOne(cascade = CascadeType.PERSIST , fetch = FetchType.LAZY)
+    private LawyerEntity lawyer;
 }

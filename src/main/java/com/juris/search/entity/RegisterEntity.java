@@ -3,6 +3,7 @@ package com.juris.search.entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -18,15 +19,18 @@ public class RegisterEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @GeneratedValue
     private Long id;
 
     private String username;
 
     private String document;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime password;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.PERSIST)
     private LawyerEntity lawyer;
+
 
 }
