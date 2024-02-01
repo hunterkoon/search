@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @Table(name = "tbl-region", schema = "search")
 public class RegionEntity implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @Id

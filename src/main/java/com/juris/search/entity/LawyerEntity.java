@@ -29,13 +29,13 @@ public class LawyerEntity implements Serializable {
     private String name;
     private String lastname;
 
-    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     private List<ParametersEntity> parameters;
 
-    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
+    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     private List<RegionEntity> region;
 
-    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
     private RegisterEntity register;
 
 }

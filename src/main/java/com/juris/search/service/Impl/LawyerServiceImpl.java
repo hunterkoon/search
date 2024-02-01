@@ -6,12 +6,16 @@ import com.juris.search.exception.HandlerException;
 import com.juris.search.model.LawyerDTO;
 import com.juris.search.repository.LawyerRepository;
 import com.juris.search.service.LawyerService;
-import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+
 @Service
+@Slf4j
 public class LawyerServiceImpl implements LawyerService {
 
     private final LawyerRepository lawerRepository;
@@ -21,15 +25,16 @@ public class LawyerServiceImpl implements LawyerService {
     }
 
     @Override
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRED)
     public LawyerEntity save(LawyerEntity lawyerEntity) {
 
         lawerRepository.save(LawyerEntity.builder()
                 .document(lawyerEntity.getDocument())
                 .name(lawyerEntity.getName())
+                .lastname(lawyerEntity.getLastname())
                 .orderCode(lawyerEntity.getOrderCode())
                 .parameters(lawyerEntity.getParameters())
-                //.region(lawyerEntity.getRegion())
+                .region(lawyerEntity.getRegion())
                 .register(lawyerEntity.getRegister())
                 .build());
 
@@ -38,11 +43,15 @@ public class LawyerServiceImpl implements LawyerService {
 
     @Override
     public LawyerDTO get(String orderCode, String document) {
-        LawyerPK pk = new LawyerPK().getPK(document, orderCode);
-        Optional<LawyerEntity> lawyer = lawerRepository.findById(pk);
-        if (lawyer.isPresent()) {
-            return new LawyerDTO().getDTO(lawyer.get());
-        }
-        throw new HandlerException("No Client Found");
+        LawyerDTO lawyerDTO = new LawyerDTO();
+        Optional<LawyerEntity> lawyer =
+                lawerRepository.findById(new LawyerPK(document, orderCode));
+        lawyer.ifPresentOrElse(lawyerDTO::setDTO,
+                () -> {
+                    throw new HandlerException("No Client Found");
+                }
+        );
+        return lawyerDTO;
     }
+
 }

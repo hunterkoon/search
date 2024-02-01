@@ -25,9 +25,6 @@ public class ParametersEntity implements Serializable {
     private String parameter;
 
     @Column
-    private String document;
-
-    @Column
     private String orderCode;
 
     @ManyToOne(cascade = CascadeType.PERSIST , fetch = FetchType.LAZY)

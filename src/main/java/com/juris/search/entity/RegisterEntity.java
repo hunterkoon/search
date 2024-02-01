@@ -1,17 +1,21 @@
 package com.juris.search.entity;
 
+import com.juris.search.entity.pk.RegisterPK;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serial;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@IdClass(RegisterPK.class)
 @Table(name = "tbl-register", schema = "search")
 public class RegisterEntity implements Serializable {
 
@@ -19,17 +23,15 @@ public class RegisterEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue
-    private Long id;
-
     private String username;
 
+    @Id
     private String document;
 
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
-    private LocalDateTime password;
+    @Column
+    private String password;
 
-    @OneToOne(fetch = FetchType.EAGER ,cascade = CascadeType.PERSIST)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private LawyerEntity lawyer;
 
 

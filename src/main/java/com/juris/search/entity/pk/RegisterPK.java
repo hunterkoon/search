@@ -9,16 +9,14 @@ import java.io.Serializable;
 
 @Getter
 @Setter
-public class RegionPK implements Serializable  {
+public class RegisterPK implements Serializable  {
 
 
     @Serial
     private static final long serialVersionUID = 1L;
-    @Id
-    private String stateCode;
 
     @Id
-    private String number;
+    private String username;
 
     @Id
     private String document;

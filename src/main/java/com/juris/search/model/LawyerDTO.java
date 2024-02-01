@@ -1,11 +1,15 @@
 package com.juris.search.model;
 
 import com.juris.search.entity.LawyerEntity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class LawyerDTO {
 
     private String name;
@@ -13,12 +17,10 @@ public class LawyerDTO {
     private String document;
     private String orderCode;
 
-    public final LawyerDTO getDTO(LawyerEntity entity){
+    public void setDTO(LawyerEntity entity) {
         this.name = entity.getName();
         this.lastname = entity.getLastname();
         this.document = entity.getDocument();
         this.orderCode = entity.getOrderCode();
-        return this;
     }
-
 }
