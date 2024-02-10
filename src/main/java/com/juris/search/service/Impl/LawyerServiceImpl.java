@@ -26,19 +26,13 @@ public class LawyerServiceImpl implements LawyerService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public Lawyer save(Lawyer lawyer) {
-
-        lawerRepository.save(Lawyer.builder()
-                .document(lawyer.getDocument())
-                .name(lawyer.getName())
-                .lastname(lawyer.getLastname())
-                .orderCode(lawyer.getOrderCode())
-                .parameters(lawyer.getParameters())
-                .region(lawyer.getRegion())
-                .register(lawyer.getRegister())
-                .build());
-
-        return lawyer;
+    public void create(Lawyer lawyer) {
+        //validate user request
+        if (Lawyer.equalsNull(lawyer)) {
+            throw new HandlerException("Required fields cannot be null or empty.");
+        }
+        //save new user and update old info.
+        lawerRepository.save(lawyer);
     }
 
     @Override

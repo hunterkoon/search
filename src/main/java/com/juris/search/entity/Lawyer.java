@@ -22,13 +22,18 @@ public class Lawyer implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
+    @Column(nullable = false)
     private String document;
 
     @Id
+    @Column(nullable = false)
+
     private String orderCode;
 
+    @Column(nullable = false)
     private String name;
 
+    @Column(nullable = false)
     private String lastname;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -40,5 +45,9 @@ public class Lawyer implements Serializable {
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Register register;
 
+    public static boolean equalsNull(Lawyer lawyer) {
+        return lawyer.getDocument().isBlank() || lawyer.getOrderCode().isBlank()
+                    || lawyer.getName().isBlank() || lawyer.getLastname().isBlank();
+    }
 
 }

@@ -4,6 +4,7 @@ import com.juris.search.entity.Lawyer;
 import com.juris.search.service.LawyerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNull;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,8 +21,9 @@ public class LawyerController {
     }
 
     @PostMapping
-    public ResponseEntity<Lawyer> create(@RequestBody Lawyer lawyer) {
-       return new ResponseEntity<>(lawyerService.save(lawyer), HttpStatus.CREATED);
+    public ResponseEntity<Lawyer> create(@RequestBody @NonNull Lawyer lawyer) {
+        lawyerService.create(lawyer);
+       return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
     @GetMapping("/{orderCode}/{documentCode}")

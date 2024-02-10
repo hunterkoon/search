@@ -5,7 +5,7 @@ import com.juris.search.model.LawyerDTO;
 
 public interface LawyerService {
 
-    Lawyer save(Lawyer lawyer);
+    void create(Lawyer lawyer);
 
     LawyerDTO get(String orderCode, String document);
 }
