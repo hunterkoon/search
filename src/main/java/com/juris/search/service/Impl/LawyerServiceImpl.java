@@ -1,6 +1,6 @@
 package com.juris.search.service.Impl;
 
-import com.juris.search.entity.LawyerEntity;
+import com.juris.search.entity.Lawyer;
 import com.juris.search.entity.pk.LawyerPK;
 import com.juris.search.exception.HandlerException;
 import com.juris.search.model.LawyerDTO;
@@ -26,28 +26,27 @@ public class LawyerServiceImpl implements LawyerService {
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED)
-    public LawyerEntity save(LawyerEntity lawyerEntity) {
+    public Lawyer save(Lawyer lawyer) {
 
-        lawerRepository.save(LawyerEntity.builder()
-                .document(lawyerEntity.getDocument())
-                .name(lawyerEntity.getName())
-                .lastname(lawyerEntity.getLastname())
-                .orderCode(lawyerEntity.getOrderCode())
-                .parameters(lawyerEntity.getParameters())
-                .region(lawyerEntity.getRegion())
-                .register(lawyerEntity.getRegister())
+        lawerRepository.save(Lawyer.builder()
+                .document(lawyer.getDocument())
+                .name(lawyer.getName())
+                .lastname(lawyer.getLastname())
+                .orderCode(lawyer.getOrderCode())
+                .parameters(lawyer.getParameters())
+                .region(lawyer.getRegion())
+                .register(lawyer.getRegister())
                 .build());
 
-        return lawyerEntity;
+        return lawyer;
     }
 
     @Override
     public LawyerDTO get(String orderCode, String document) {
         LawyerDTO lawyerDTO = new LawyerDTO();
-        Optional<LawyerEntity> lawyer =
+        Optional<Lawyer> lawyer =
                 lawerRepository.findById(new LawyerPK(document, orderCode));
-        lawyer.ifPresentOrElse(lawyerDTO::setDTO,
-                () -> {
+        lawyer.ifPresentOrElse(lawyerDTO::setDTO, () -> {
                     throw new HandlerException("No Client Found");
                 }
         );

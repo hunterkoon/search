@@ -1,6 +1,6 @@
 package com.juris.search.model;
 
-import com.juris.search.entity.ParametersEntity;
+import com.juris.search.entity.Parameters;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,9 +13,9 @@ public class ParameterDTO {
 
     private List<String> parameter = new ArrayList<>();
 
-    public final List<String> getDTO(List<ParametersEntity> entities){
+    public final List<String> getDTO(List<Parameters> entities){
 
-        for(ParametersEntity param : entities){
+        for(Parameters param : entities){
             this.parameter.add(param.getParameter());
         }
 

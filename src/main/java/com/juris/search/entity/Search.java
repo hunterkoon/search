@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Table(name = "tbl-search", schema = "search")
-public class SearchEntity {
+public class Search {
 
     private static final long serialVersionUID = 1L;
 
@@ -29,9 +29,9 @@ public class SearchEntity {
     private String document;
 
     @ManyToOne
-    private LawyerEntity lawyer;
+    private Lawyer lawyer;
 
-    public SearchEntity getEntity(SearchGeneralDTO dto) {
+    public Search getEntity(SearchGeneralDTO dto) {
         this.inclusion = LocalDateTime.now();
         return this;
     }

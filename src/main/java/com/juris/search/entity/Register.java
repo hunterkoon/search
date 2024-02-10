@@ -17,7 +17,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @IdClass(RegisterPK.class)
 @Table(name = "tbl-register", schema = "search")
-public class RegisterEntity implements Serializable {
+public class Register implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -25,14 +25,11 @@ public class RegisterEntity implements Serializable {
     @Id
     private String username;
 
-    @Id
-    private String document;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Lawyer lawyer;
 
     @Column
     private String password;
-
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    private LawyerEntity lawyer;
-
 
 }

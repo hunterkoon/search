@@ -1,6 +1,6 @@
 package com.juris.search.controller.api.v1;
 
-import com.juris.search.entity.LawyerEntity;
+import com.juris.search.entity.Lawyer;
 import com.juris.search.service.LawyerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class LawyerController {
     }
 
     @PostMapping
-    public ResponseEntity<LawyerEntity> create(@RequestBody LawyerEntity lawyer) {
+    public ResponseEntity<Lawyer> create(@RequestBody Lawyer lawyer) {
        return new ResponseEntity<>(lawyerService.save(lawyer), HttpStatus.CREATED);
     }
 

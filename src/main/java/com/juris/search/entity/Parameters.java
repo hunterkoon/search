@@ -12,7 +12,7 @@ import java.io.Serializable;
 @Setter
 @Table(name = "tbl-parameters", schema = "search")
 @SequenceGenerator(name = "PARAM_SQ", sequenceName = "PARAMETER_SEQ", initialValue = 1, allocationSize = 1)
-public class ParametersEntity implements Serializable {
+public class Parameters implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
@@ -28,5 +28,5 @@ public class ParametersEntity implements Serializable {
     private String orderCode;
 
     @ManyToOne(cascade = CascadeType.PERSIST , fetch = FetchType.LAZY)
-    private LawyerEntity lawyer;
+    private Lawyer lawyer;
 }

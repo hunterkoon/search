@@ -1,6 +1,6 @@
 package com.juris.search.model;
 
-import com.juris.search.entity.LawyerEntity;
+import com.juris.search.entity.Lawyer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ public class LawyerDTO {
     private String document;
     private String orderCode;
 
-    public void setDTO(LawyerEntity entity) {
+    public void setDTO(Lawyer entity) {
         this.name = entity.getName();
         this.lastname = entity.getLastname();
         this.document = entity.getDocument();

@@ -14,14 +14,12 @@ public class RegionPK implements Serializable  {
 
     @Serial
     private static final long serialVersionUID = 1L;
+
     @Id
     private String stateCode;
 
     @Id
     private String number;
-
-    @Id
-    private String document;
 
 
 }

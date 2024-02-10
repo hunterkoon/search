@@ -16,26 +16,29 @@ import java.util.List;
 @AllArgsConstructor
 @IdClass(LawyerPK.class)
 @Table(name = "tbl-lawyer", schema = "search")
-public class LawyerEntity implements Serializable {
+public class Lawyer implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 1L;
 
     @Id
     private String document;
+
     @Id
     private String orderCode;
 
     private String name;
+
     private String lastname;
 
-    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    private List<ParametersEntity> parameters;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Parameters> parameters;
 
-    @OneToMany(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    private List<RegionEntity> region;
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Region> region;
 
-    @OneToOne(fetch = FetchType.EAGER , cascade = CascadeType.ALL)
-    private RegisterEntity register;
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Register register;
+
 
 }

@@ -21,6 +21,7 @@ public class LawyerPK implements Serializable {
 
     @Id
     private String document;
+
     @Id
     private String orderCode;
 

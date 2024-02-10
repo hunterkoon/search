@@ -1,6 +1,6 @@
 package com.juris.search.controller.api.v1;
 
-import com.juris.search.entity.RegionEntity;
+import com.juris.search.entity.Region;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +21,7 @@ public class RegionController {
 
 
     @PostMapping
-    public ResponseEntity<Long> createRegion(@RequestBody List<RegionEntity> regions) {
+    public ResponseEntity<Long> createRegion(@RequestBody List<Region> regions) {
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
